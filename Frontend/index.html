@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CONCEPT CORE | Enterprise IT Solutions</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Internal CSS for Professional Styling -->
+    <style>
+        :root {
+            --primary-bg: #0b0f19;
+            --secondary-bg: #111827;
+            --accent-color: #00f2ff; /* Neon Cyan */
+            --accent-hover: #00bcd4;
+            --text-main: #ffffff;
+            --text-muted: #9ca3af;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--primary-bg);
+            color: var(--text-main);
+            overflow-x: hidden;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4, h5, .navbar-brand {
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 1px;
+        }
+
+        .text-neon { color: var(--accent-color); text-shadow: 0 0 10px rgba(0, 242, 255, 0.3); }
+        .text-muted { color: var(--text-muted) !important; }
+
+        /* Navbar */
+        .navbar {
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+            background: transparent;
+        }
+
+        .navbar.scrolled {
+            background: rgba(11, 15, 25, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--glass-border);
+            padding: 0.8rem 0;
+        }
+
+        .nav-link {
+            color: var(--text-main) !important;
+            font-weight: 500;
+            margin-left: 1.5rem;
+            position: relative;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        .nav-link:hover, .nav-link.active { opacity: 1; color: var(--accent-color) !important; }
+
+        /* Hero Section */
+        #hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            background: radial-gradient(circle at 50% 50%, #1a233a 0%, #0b0f19 70%);
+            overflow: hidden;
+        }
+
+        #hero::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2300f2ff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #fff, var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Buttons */
+        .btn-neon {
+            background-color: var(--accent-color);
+            color: #000;
+            font-weight: 600;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-neon:hover {
+            background-color: #fff;
+            box-shadow: 0 0 20px rgba(0, 242, 255, 0.6);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline-light { border-color: rgba(255,255,255,0.2); }
+        .btn-outline-light:hover { background: rgba(255,255,255,0.1); border-color: #fff; }
+
+        /* Services Cards */
+        .service-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            padding: 2.5rem;
+            border-radius: 12px;
+            transition: all 0.4s ease;
+            height: 100%;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-color);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Stats Section */
+        .stats-box {
+            padding: 2rem;
+            border-right: 1px solid var(--glass-border);
+        }
+        .stats-box:last-child { border-right: none; }
+        .stats-number { font-size: 2.5rem; font-weight: 700; color: #fff; }
+
+        /* Footer */
+        footer {
+            background-color: #05080e;
+            padding-top: 5rem;
+            border-top: 1px solid var(--glass-border);
+        }
+
+        .footer-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.8rem;
+            transition: 0.3s;
+        }
+
+        .footer-link:hover { color: var(--accent-color); padding-left: 5px; }
+
+        .social-btn {
+            width: 40px; height: 40px;
+            display: inline-flex; align-items: center; justify-content: center;
+            background: var(--glass-bg);
+            border-radius: 50%;
+            color: #fff;
+            margin-right: 10px;
+            transition: 0.3s;
+        }
+        .social-btn:hover { background: var(--accent-color); color: #000; }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top navbar-dark" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <i class="fas fa-cube text-neon me-2"></i> 
+                CONCEPT <span class="text-neon ms-1">CORE</span>
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="projects.html">Projects</a></li>
+                    <li class="nav-item ms-lg-3">
+                        <a class="btn btn-neon" href="contact.html">Get Started <i class="fas fa-arrow-right ms-2"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="container position-relative z-1">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <span class="text-neon text-uppercase fw-bold ls-2 mb-2 d-block">Innovate. Build. Scale.</span>
+                    <h1 class="hero-title mb-4">Architecting the <br><span class="gradient-text">Digital Future</span></h1>
+                    <p class="hero-subtitle text-muted lead mb-5 w-75">
+                        We deliver premium IT solutions, enterprise-grade web development, and data analytics that drive business growth.
+                    </p>
+                    
+                    <div class="d-flex flex-wrap gap-3">
+                        <!-- BUTTON 1: Redirects to Contact Page -->
+                        <a href="contact.html" class="btn btn-neon px-4 py-3">Start Project</a>
+
+                        <!-- BUTTON 2: Redirects to Portfolio Page -->
+                        <a href="projects.html" class="btn btn-outline-light px-4 py-3">View Portfolio</a>
+                    </div>
+
+                </div>
+                <!-- Optional: Hero Image/Graphic Column -->
+                <div class="col-lg-4 d-none d-lg-block text-center">
+                   <div style="font-size: 15rem; color: var(--glass-border); opacity: 0.3;">
+                       <i class="fas fa-network-wired"></i>
+                   </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats / Trust Section -->
+    <section class="py-5" style="background: var(--secondary-bg);">
+        <div class="container">
+            <div class="row g-0 text-center border-top border-bottom" style="border-color: var(--glass-border) !important;">
+                <div class="col-md-3 stats-box">
+                    <div class="stats-number text-neon">50+</div>
+                    <div class="text-muted small">Projects Delivered</div>
+                </div>
+                <div class="col-md-3 stats-box">
+                    <div class="stats-number text-neon">98%</div>
+                    <div class="text-muted small">Client Satisfaction</div>
+                </div>
+                <div class="col-md-3 stats-box">
+                    <div class="stats-number text-neon">24/7</div>
+                    <div class="text-muted small">Technical Support</div>
+                </div>
+                <div class="col-md-3 stats-box">
+                    <div class="stats-number text-neon">5+</div>
+                    <div class="text-muted small">Years Experience</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-5 my-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h6 class="text-neon text-uppercase letter-spacing-2">What We Do</h6>
+                <h2 class="display-4 fw-bold">Our <span class="text-white">Expertise</span></h2>
+                <p class="text-muted mx-auto w-50">Comprehensive technical solutions tailored to modern business needs.</p>
+            </div>
+            
+            <div class="row g-4">
+                <!-- Service 1 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card">
+                        <i class="fas fa-laptop-code card-icon"></i>
+                        <h4>Web Development</h4>
+                        <p class="text-muted mt-3">High-performance, scalable web applications using React, Node.js, and Next.js. We build systems that grow with you.</p>
+                        <a href="#" class="text-neon text-decoration-none small">Learn more <i class="fas fa-chevron-right ms-1"></i></a>
+                    </div>
+                </div>
+                <!-- Service 2 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card">
+                        <i class="fas fa-chart-line card-icon"></i>
+                        <h4>Data & Analytics</h4>
+                        <p class="text-muted mt-3">Transform raw data into actionable intelligence. Custom dashboards, CRM integration, and predictive modeling.</p>
+                        <a href="#" class="text-neon text-decoration-none small">Learn more <i class="fas fa-chevron-right ms-1"></i></a>
+                    </div>
+                </div>
+                <!-- Service 3 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card">
+                        <i class="fas fa-shield-alt card-icon"></i> <!-- Changed Icon -->
+                        <h4>Cyber Security</h4>
+                        <p class="text-muted mt-3">Protecting your digital assets with enterprise-grade security audits, penetration testing, and safe protocols.</p>
+                        <a href="#" class="text-neon text-decoration-none small">Learn more <i class="fas fa-chevron-right ms-1"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Stack / Technologies (New Professional Section) -->
+    <section class="py-4">
+        <div class="container text-center">
+            <p class="text-muted mb-4 small text-uppercase">Powered by modern technologies</p>
+            <div class="d-flex justify-content-center gap-4 flex-wrap opacity-50">
+                <i class="fab fa-react fa-2x text-white"></i>
+                <i class="fab fa-node fa-2x text-white"></i>
+                <i class="fab fa-python fa-2x text-white"></i>
+                <i class="fab fa-aws fa-2x text-white"></i>
+                <i class="fab fa-docker fa-2x text-white"></i>
+                <i class="fab fa-js fa-2x text-white"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-5" style="background: var(--secondary-bg);">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-end mb-5">
+                <div>
+                    <h6 class="text-neon text-uppercase">Projects</h6>
+                    <h2 class="display-5 fw-bold mb-0">Featured <span class="text-white">Work</span></h2>
+                </div>
+                <a href="projects.html" class="btn btn-outline-light rounded-pill px-4 d-none d-md-block">View All Projects</a>
+            </div>
+
+            <div class="row g-4" id="project-grid">
+                <!-- Javascript will load content here -->
+                 <!-- Placeholder for visual check -->
+                 <div class="col-md-6 col-lg-4">
+                    <div class="card bg-dark border-secondary h-100">
+                        <div class="card-body p-4 text-center">
+                            <div class="spinner-border text-neon mb-3" role="status"></div>
+                            <h5 class="card-title text-white">Loading Projects...</h5>
+                            <p class="card-text text-muted small">Fetching latest data from server.</p>
+                        </div>
+                    </div>
+                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-5 text-center">
+        <div class="container py-4">
+            <h2 class="fw-bold mb-3">Ready to transform your business?</h2>
+            <p class="text-muted mb-4">Let's build something extraordinary together.</p>
+            <a href="contact.html" class="btn btn-neon btn-lg">Get a Free Consultation</a>
+        </div>
+    </section>
+
+    <!-- Fixed Multi-Column Footer -->
+<footer class="pt-5 pb-3 mt-5" style="background-color: #050508; border-top: 1px solid #222;">
+    <div class="container">
+        <div class="row g-4">
+            
+            <!-- Column 1: Brand & Description -->
+            <div class="col-lg-4 col-md-6">
+                <h3 class="fw-bold text-white mb-3">CONCEPT <span class="text-neon">CORE</span></h3>
+                <p class="text-white-50 small pe-lg-4">
+                    We are a forward-thinking IT solutions provider dedicated to helping businesses navigate the digital landscape with confidence and innovation.
+                </p>
+                <div class="d-flex gap-3 mt-3">
+                    <a href="#" class="btn btn-outline-light btn-sm rounded-circle"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="btn btn-outline-light btn-sm rounded-circle"><i class="fab fa-github"></i></a>
+                    <a href="#" class="btn btn-outline-light btn-sm rounded-circle"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+
+            <!-- Column 2: Quick Links -->
+            <div class="col-lg-2 col-md-6">
+                <h5 class="text-white fw-bold mb-3">Quick Links</h5>
+                <ul class="list-unstyled">
+                    <li class="mb-2"><a href="about.html" class="text-white-50 text-decoration-none hover-white">About Us</a></li>
+                    <li class="mb-2"><a href="services.html" class="text-white-50 text-decoration-none hover-white">Services</a></li>
+                    <li class="mb-2"><a href="projects.html" class="text-white-50 text-decoration-none hover-white">Projects</a></li>
+                    <li class="mb-2"><a href="contact.html" class="text-white-50 text-decoration-none hover-white">Contact</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 3: Services -->
+            <div class="col-lg-3 col-md-6">
+                <h5 class="text-white fw-bold mb-3">Services</h5>
+                <ul class="list-unstyled">
+                    <li class="mb-2"><a href="services.html" class="text-white-50 text-decoration-none hover-white">Web Development</a></li>
+                    <li class="mb-2"><a href="services.html" class="text-white-50 text-decoration-none hover-white">Data Analytics</a></li>
+                    <li class="mb-2"><a href="services.html" class="text-white-50 text-decoration-none hover-white">Cloud Solutions</a></li>
+                    <li class="mb-2"><a href="services.html" class="text-white-50 text-decoration-none hover-white">Consultancy</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 4: Contact Info -->
+            <div class="col-lg-3 col-md-6">
+                <h5 class="text-white fw-bold mb-3">Contact</h5>
+                <ul class="list-unstyled text-white-50">
+                    <li class="mb-2"><i class="fas fa-map-marker-alt text-neon me-2"></i> Gurugram <Haryana-122001></Haryana-122001></li>
+                    <li class="mb-2"><i class="fas fa-envelope text-neon me-2"></i> conceptcore02@gmail.com</li>
+                    <li class="mb-2"><i class="fas fa-phone text-neon me-2"></i> +91-7206617045</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Copyright Line -->
+        <div class="text-center pt-4 mt-4 border-top border-secondary">
+            <p class="text-white fw-bold mb-0">&copy; 2025 Concept Core. All Rights Reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<!-- Add this CSS inside your <style> tag or style.css to make links hover white -->
+<style>
+    .text-white-50 { color: rgba(255, 255, 255, 0.7) !important; }
+    .hover-white:hover { color: #ffffff !important; transition: 0.3s; }
+</style>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Main JS -->
+    <script>
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('mainNav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Simulating Project Load (remove this when you have real data)
+        // This is just to show how the layout looks after loading
+        setTimeout(() => {
+            const projectGrid = document.getElementById('project-grid');
+            // Normally you would fetch this from a database
+            const mockProjects = [
+                { title: 'FinTech Dashboard', cat: 'Analytics', img: 'fas fa-chart-pie' },
+                { title: 'E-Commerce API', cat: 'Backend', img: 'fas fa-server' },
+                { title: 'HealthCare App', cat: 'Mobile', img: 'fas fa-mobile-alt' }
+            ];
+            
+            let html = '';
+            mockProjects.forEach(p => {
+                html += `
+                <div class="col-md-4 fade-in">
+                    <div class="service-card p-0 overflow-hidden" style="min-height: auto;">
+                        <div class="p-5 bg-dark text-center">
+                            <i class="${p.img} fa-3x text-secondary"></i>
+                        </div>
+                        <div class="p-4">
+                            <div class="badge bg-secondary mb-2">${p.cat}</div>
+                            <h5 class="text-white">${p.title}</h5>
+                            <a href="#" class="text-neon text-decoration-none small stretched-link">View Case Study <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>`;
+            });
+            projectGrid.innerHTML = html;
+        }, 1500);
+    </script>
+</body>
+</html>

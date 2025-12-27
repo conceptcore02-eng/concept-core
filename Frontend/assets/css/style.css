@@ -1,0 +1,213 @@
+:root {
+    --primary-bg: #0b0f19;
+    --secondary-bg: #111827;
+    --accent-color: #00f2ff; /* Neon Cyan */
+    --text-white: #ffffff;
+    --text-muted: #b0b0b0;
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+body {
+    background-color: var(--primary-bg);
+    color: var(--text-white);
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6, .navbar-brand {
+    font-family: 'Orbitron', sans-serif;
+    color: var(--text-white);
+}
+
+p, li, span { color: var(--text-muted); }
+.text-neon { color: var(--accent-color) !important; text-shadow: 0 0 10px rgba(0, 242, 255, 0.3); }
+.text-white { color: #fff !important; }
+
+/* --- Top Bar --- */
+.top-bar {
+    background-color: #05080e;
+    border-bottom: 1px solid var(--glass-border);
+    padding: 8px 0;
+    font-size: 0.85rem;
+}
+.top-socials a { color: var(--text-muted); margin-left: 15px; transition: 0.3s; }
+.top-socials a:hover { color: var(--accent-color); }
+
+/* --- Navbar --- */
+.navbar {
+    background: rgba(11, 15, 25, 0.95);
+    border-bottom: 1px solid var(--glass-border);
+    padding: 1rem 0;
+    backdrop-filter: blur(10px);
+}
+.nav-link { color: #fff !important; margin-left: 1rem; opacity: 0.8; transition: 0.3s; }
+.nav-link:hover, .nav-link.active { color: var(--accent-color) !important; opacity: 1; }
+
+/* --- Buttons --- */
+.btn-neon {
+    background: var(--accent-color); color: #000; font-weight: bold;
+    padding: 10px 25px; border: none; transition: 0.3s;
+}
+.btn-neon:hover { background: #fff; box-shadow: 0 0 15px var(--accent-color); }
+
+/* --- Cards & Glassmorphism --- */
+.glass-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    padding: 2rem;
+    border-radius: 12px;
+    height: 100%;
+    transition: 0.3s;
+}
+.glass-card:hover { border-color: var(--accent-color); transform: translateY(-5px); }
+
+/* --- Team Photos (Fixed Alignment) --- */
+.team-photo {
+    width: 140px; height: 140px;
+    object-fit: cover; object-position: top center;
+    border-radius: 50%; border: 3px solid var(--accent-color);
+    padding: 4px; background: rgba(0,0,0,0.3);
+    margin-bottom: 15px;
+}
+
+/* --- Page Headers --- */
+.page-header {
+    background: linear-gradient(rgba(11, 15, 25, 0.85), rgba(11, 15, 25, 0.95)), url('https://source.unsplash.com/1600x900/?tech,server');
+    background-size: cover; padding: 120px 0 80px 0;
+    border-bottom: 1px solid var(--glass-border);
+}
+
+/* --- Footer --- */
+footer { background: #05080e; padding-top: 4rem; border-top: 1px solid var(--glass-border); margin-top: auto; }
+.footer-link { color: var(--text-muted); text-decoration: none; display: block; margin-bottom: 10px; transition: 0.3s; }
+.footer-link:hover { color: var(--accent-color); padding-left: 5px; }
+.social-btn {
+    width: 40px; height: 40px; display: inline-flex; align-items: center; justify-content: center;
+    background: var(--glass-bg); border-radius: 50%; color: #fff; margin-right: 10px; transition: 0.3s;
+    text-decoration: none;
+}
+.social-btn:hover { background: var(--accent-color); color: #000; }
+
+/* Add or Update this in style.css */
+.navbar-brand {
+    font-family: 'Orbitron', sans-serif !important; /* Forces the sci-fi font */
+    font-weight: 700; /* Bold */
+    letter-spacing: 1px;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.text-neon {
+    color: #00f2ff !important; /* Neon Cyan */
+    text-shadow: 0 0 10px rgba(0, 242, 255, 0.5); /* Glow Effect */
+}
+
+/* --- TOP BAR STYLES --- */
+.top-bar {
+    background-color: #000000; /* Pure Black */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 10px 0;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* Flex container for the Left Side (Email + Time) */
+.top-info {
+    display: flex;
+    align-items: center; /* Vertically centers text with icons */
+    gap: 25px; /* Space between Email group and Time group */
+}
+
+/* Individual items (Icon + Text) */
+.info-item {
+    display: flex;
+    align-items: center; /* Ensures the icon sits exactly in middle of text */
+    color: #e0e0e0; /* Light Gray text */
+}
+
+.info-item i {
+    margin-right: 8px; /* Space between icon and text */
+    font-size: 1rem;
+}
+
+/* Social Icons (Right Side) */
+.top-socials {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.top-socials a {
+    color: #ffffff;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    display: flex; /* Helps center the icon inside the link */
+    align-items: center;
+}
+
+.top-socials a:hover {
+    color: var(--accent-color); /* Neon Blue on hover */
+    transform: translateY(-2px);
+}
+
+/* --- CONCEPT CORE TOP BAR --- */
+.top-bar {
+    background-color: #05080e; /* Matches your Footer/Body background */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Subtle Glass Border */
+    padding: 8px 0; /* Tight professional spacing */
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem; /* Small, crisp text */
+    color: #b0b0b0; /* Light Gray text (High Readability) */
+    position: relative;
+    z-index: 1050; /* Ensures it sits above everything */
+}
+
+/* Links inside Top Bar (Email) */
+.top-bar a {
+    color: #b0b0b0;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+.top-bar a:hover {
+    color: #ffffff;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+}
+
+/* Icons styling (Envelope, Clock) */
+.top-bar i {
+    color: #00f2ff; /* NEON CYAN - Matches your Brand */
+    margin-right: 8px;
+    font-size: 0.9rem;
+    vertical-align: middle; /* Fixes vertical alignment */
+}
+
+/* Right Side Social Icons */
+.header-socials {
+    display: flex;
+    gap: 15px;
+}
+
+.header-socials a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    background: rgba(255, 255, 255, 0.05); /* Glass effect circles */
+    border-radius: 50%;
+    color: #fff;
+    font-size: 0.8rem;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.header-socials a:hover {
+    background: #00f2ff; /* Neon background on hover */
+    color: #000; /* Black text on hover */
+    border-color: #00f2ff;
+    box-shadow: 0 0 10px rgba(0, 242, 255, 0.6); /* Glow effect */
+    transform: translateY(-2px);
+}
